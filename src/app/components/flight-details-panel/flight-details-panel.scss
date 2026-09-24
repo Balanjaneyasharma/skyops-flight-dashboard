@@ -1,0 +1,60 @@
+.details-panel,
+.empty-state {
+	margin: 0;
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	background: var(--surface);
+	box-shadow: 0 8px 24px rgba(24, 49, 56, 0.05);
+}
+
+.details-panel {
+	padding: 18px;
+}
+
+.details-panel h3 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 8px;
+	margin: 0 0 17px;
+	color: var(--ink);
+	font-size: 1.15rem;
+	letter-spacing: -0.03em;
+}
+
+.callsign {
+	color: var(--ink-muted);
+	font-size: 0.73rem;
+	font-weight: 400;
+	letter-spacing: 0.04em;
+}
+
+.details-panel dl {
+	display: grid;
+	grid-template-columns: 74px 1fr;
+	gap: 10px 9px;
+	margin: 0;
+}
+
+.details-panel dt {
+	color: var(--ink-muted);
+	font-size: 0.64rem;
+	font-weight: 800;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.details-panel dd {
+	min-width: 0;
+	margin: 0;
+	color: var(--ink);
+	font-size: 0.76rem;
+	line-height: 1.35;
+}
+
+.empty-state {
+	padding: 19px 18px;
+	color: var(--ink-muted);
+	font-size: 0.76rem;
+	line-height: 1.5;
+}

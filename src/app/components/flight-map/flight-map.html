@@ -1,0 +1,45 @@
+<div
+    id="flight-map"
+    role="application"
+    aria-label="Interactive flight map"
+    style="height: 100%; width: 100%;"
+></div>
+
+<div class="map-tools" aria-label="Map display controls">
+    <div class="playback-row">
+        <div class="playback-copy">
+            <span class="control-kicker">Route playback</span>
+            <strong>{{ playbackPercent() }}% complete</strong>
+        </div>
+        <button
+            type="button"
+            class="play-control"
+            [class.is-active]="isPlaying()"
+            [attr.aria-label]="isPlaying() ? 'Pause route playback' : 'Play route playback'"
+            [attr.aria-pressed]="isPlaying()"
+            (click)="togglePlayback()"
+        >
+            <span aria-hidden="true">{{ isPlaying() ? 'Ⅱ' : '▶' }}</span>
+        </button>
+    </div>
+    <label class="playback-slider">
+        <span class="sr-only">Playback position</span>
+        <input
+            type="range"
+            min="0"
+            max="100"
+            [value]="playbackProgress() * 100"
+            aria-label="Flight playback progress"
+            (input)="setPlaybackProgress($event)"
+        />
+    </label>
+    <div class="layer-row">
+        <span class="control-kicker">Layers</span>
+        <button type="button" class="map-tool" [class.is-active]="showWeather()" (click)="toggleWeather()">
+            Weather
+        </button>
+        <button type="button" class="map-tool" [class.is-active]="showAirports()" (click)="toggleAirports()">
+            Airports
+        </button>
+    </div>
+</div>

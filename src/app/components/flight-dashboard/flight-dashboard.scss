@@ -1,0 +1,250 @@
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 316px) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 'header header' 'sidebar map';
+    gap: 16px;
+    height: 100vh;
+    padding: 18px;
+}
+
+.dashboard-header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    min-height: 76px;
+    padding: 0 4px;
+}
+
+.dashboard-sidebar {
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.dashboard-map {
+    position: relative;
+    grid-area: map;
+    min-height: 0;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(16, 45, 58, 0.18);
+    border-radius: 18px;
+    background: var(--navy);
+    box-shadow: var(--shadow);
+}
+
+.brand-lockup,
+.header-context,
+.map-heading,
+.map-legend {
+    position: relative;
+    z-index: 2;
+}
+
+.brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-mark {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 11px 11px 11px 3px;
+    background: var(--navy);
+    color: var(--amber);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.eyebrow {
+    margin: 0 0 3px;
+    color: var(--ink-muted);
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+h1,
+h2 {
+    margin: 0;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+h1 {
+    font-size: 1.4rem;
+}
+
+h1 span {
+    color: var(--ink-muted);
+    font-weight: 400;
+}
+
+.header-context {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: var(--ink-muted);
+    font-size: 0.75rem;
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 4px rgba(27, 135, 125, 0.12);
+}
+
+.context-divider {
+    width: 1px;
+    height: 14px;
+    background: var(--line);
+}
+
+.map-heading {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.map-heading .eyebrow,
+.map-heading h2,
+.map-count {
+    color: #fff;
+}
+
+.map-heading h2 {
+    font-size: 1.35rem;
+}
+
+.map-count {
+    padding: 7px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    background: rgba(16, 45, 58, 0.72);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.map-legend {
+    position: absolute;
+    right: 22px;
+    bottom: 20px;
+    display: flex;
+    gap: 12px;
+    padding: 9px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 9px;
+    background: rgba(16, 45, 58, 0.84);
+    color: #e6efed;
+    font-size: 0.67rem;
+}
+
+.map-legend span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.legend-active { background: #46c5aa; }
+.legend-delayed { background: #ef8b65; }
+.legend-scheduled { background: var(--amber); }
+
+@media (max-width: 900px) {
+    .dashboard-layout {
+        grid-template-columns: 270px minmax(0, 1fr);
+        padding: 12px;
+    }
+
+    .dashboard-header {
+        grid-template-columns: auto 1fr;
+    }
+
+    .header-context {
+        justify-content: flex-end;
+    }
+
+    .dashboard-header app-kpi-cards {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 680px) {
+    .dashboard-layout {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        padding: 12px;
+    }
+
+    .dashboard-header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .header-context {
+        margin-left: auto;
+    }
+
+    .dashboard-sidebar {
+        overflow: visible;
+    }
+
+    .dashboard-map {
+        min-height: 64vh;
+    }
+
+    .map-heading {
+        top: 18px;
+        right: 18px;
+    }
+
+    .map-legend {
+        right: 12px;
+        bottom: 12px;
+    }
+}
+
+.theme-toggle {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+    font-size: 0.67rem;
+    font-weight: 800;
+    padding: 6px 9px;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    border-color: var(--teal);
+    color: var(--teal);
+    outline: none;
+}

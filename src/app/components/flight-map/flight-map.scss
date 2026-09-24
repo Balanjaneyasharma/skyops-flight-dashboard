@@ -1,0 +1,133 @@
+#flight-map {
+	min-height: 100%;
+	filter: saturate(0.78) contrast(0.94);
+}
+
+:host {
+	display: block;
+	height: 100%;
+}
+
+::ng-deep .flight-cluster {
+	display: grid;
+	place-items: center;
+	border: 2px solid rgba(255, 255, 255, 0.88);
+	border-radius: 50%;
+	background: var(--teal);
+	box-shadow: 0 4px 12px rgba(16, 45, 58, 0.35);
+	color: #fff;
+	font: 800 0.72rem 'Trebuchet MS', sans-serif;
+}
+
+::ng-deep .flight-cluster span {
+	line-height: 1;
+}
+
+.map-tools {
+	position: absolute;
+	z-index: 500;
+	left: 22px;
+	bottom: 20px;
+	width: 238px;
+	padding: 13px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 12px;
+	background: rgba(16, 45, 58, 0.88);
+	color: #e6efed;
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+.playback-row,
+.layer-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.playback-copy {
+	display: grid;
+	gap: 4px;
+}
+
+.playback-copy strong {
+	color: #fff;
+	font-size: 0.78rem;
+}
+
+.control-kicker {
+	color: #a9c1c0;
+	font-size: 0.6rem;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.play-control {
+	display: grid;
+	width: 32px;
+	height: 32px;
+	place-items: center;
+	border: 1px solid rgba(245, 181, 68, 0.75);
+	border-radius: 50%;
+	background: var(--amber);
+	color: var(--navy);
+	cursor: pointer;
+	font-size: 0.72rem;
+	font-weight: 900;
+}
+
+.play-control:hover,
+.play-control:focus-visible {
+	box-shadow: 0 0 0 4px rgba(245, 181, 68, 0.18);
+	outline: none;
+}
+
+.map-tool {
+	border: 1px solid transparent;
+	border-radius: 6px;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	font-size: 0.68rem;
+	font-weight: 700;
+	padding: 7px 8px;
+}
+
+.map-tool:hover,
+.map-tool:focus-visible,
+.map-tool.is-active {
+	border-color: rgba(245, 181, 68, 0.55);
+	background: rgba(245, 181, 68, 0.16);
+	color: #ffd37b;
+	outline: none;
+}
+
+.playback-slider {
+	display: block;
+	margin: 12px 0 13px;
+}
+
+.playback-slider input {
+	display: block;
+	width: 100%;
+	accent-color: var(--amber);
+}
+
+.layer-row {
+	justify-content: flex-start;
+	gap: 5px;
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+	padding-top: 10px;
+}
+
+.layer-row .control-kicker {
+	margin-right: auto;
+}
+
+@media (max-width: 680px) {
+	.map-tools {
+		left: 12px;
+		bottom: 12px;
+		flex-wrap: wrap;
+	}
+}

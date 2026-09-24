@@ -1,0 +1,58 @@
+<form [formGroup]="filterForm" class="filter-bar">
+  <div class="section-heading">
+    <div>
+      <p class="section-kicker">Flight explorer</p>
+      <h2>Find a flight</h2>
+    </div>
+    <span class="filter-count">Live</span>
+  </div>
+
+  <label class="search-field">
+    <span class="sr-only">Search by callsign</span>
+    <span class="search-icon" aria-hidden="true">⌕</span>
+    <input
+      type="text"
+      formControlName="callsignSearch"
+      placeholder="Search callsign"
+      class="filter-search"
+    />
+  </label>
+
+  <label class="filter-field">
+    <span>Status</span>
+    <select formControlName="status" class="filter-select">
+    <option value="">All statuses</option>
+    @for (status of statusOptions; track status) {
+      <option [value]="status">{{ status }}</option>
+    }
+    </select>
+  </label>
+
+  <label class="filter-field">
+    <span>From</span>
+    <select formControlName="originCode" class="filter-select">
+    <option value="">All origins</option>
+    @for (code of originAirportCodes(); track code) {
+      <option [value]="code">{{ code }}</option>
+    }
+    </select>
+  </label>
+
+  <label class="filter-field">
+    <span>To</span>
+    <select formControlName="destinationCode" class="filter-select">
+    <option value="">All destinations</option>
+    @for (code of destinationAirportCodes(); track code) {
+      <option [value]="code">{{ code }}</option>
+    }
+    </select>
+  </label>
+  <button
+    type="button"
+    class="filter-reset"
+    [disabled]="filterForm.pristine"
+    (click)="resetFilters()"
+  >
+    Reset filters
+  </button>
+</form>

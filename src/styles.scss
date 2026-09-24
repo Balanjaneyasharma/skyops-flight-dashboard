@@ -1,0 +1,70 @@
+:root {
+  --canvas: #f4f6f3;
+  --surface: #ffffff;
+  --surface-muted: #edf1ef;
+  --ink: #14232b;
+  --ink-muted: #64727a;
+  --line: #d9e1df;
+  --navy: #102d3a;
+  --navy-soft: #1b4352;
+  --amber: #f5b544;
+  --teal: #1b877d;
+  --danger: #d9654f;
+  --shadow: 0 16px 40px rgba(24, 49, 56, 0.1);
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: var(--canvas);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 82% 4%, rgba(245, 181, 68, 0.12), transparent 24rem),
+    var(--canvas);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+app-root {
+  display: block;
+  height: 100%;
+}
+
+:root {
+  --status-scheduled: #64748b;
+  --status-active: #16a34a;
+  --status-delayed: #eab308;
+  --status-arrived: #2563eb;
+  --status-cancelled: #dc2626;
+}
+
+:root.dark-mode {
+  --canvas: #0d1c23;
+  --surface: #142a33;
+  --surface-muted: #1b3540;
+  --ink: #eaf3f0;
+  --ink-muted: #9cb0b4;
+  --line: #2d4a53;
+  --navy: #091b24;
+  --navy-soft: #143643;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+}

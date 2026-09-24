@@ -1,0 +1,28 @@
+@if (selectedFlight(); as selectedFlight) {
+    <div class="details-panel">
+        <h3>
+            {{ selectedFlight.flightNumber }}
+            <span class="callsign">{{ selectedFlight.callsign }}</span>
+        </h3>
+        <dl>
+            <dt>Aircraft</dt>
+            <dd>{{ selectedFlight.aircraftType }}</dd>
+            <dt>Origin</dt>
+            <dd>{{ selectedFlight.origin.code }} — {{ selectedFlight.origin.name }}</dd>
+            <dt>Destination</dt>
+            <dd>{{ selectedFlight.destination.code }} — {{ selectedFlight.destination.name }}</dd>
+            <dt>Status</dt>
+            <dd>
+                <app-flight-status-badge 
+                    [status]="selectedFlight.status" 
+                />
+            </dd>
+            <dt>ETD</dt>
+            <dd>{{ selectedFlight.estimatedDeparture | date:'short' }}</dd>
+            <dt>ETA</dt>
+            <dd>{{ selectedFlight.estimatedArrival | date:'short' }}</dd>
+        </dl>
+    </div>
+} @else {
+    <p class="empty-state">Select a flight on the map to view details.</p>
+}

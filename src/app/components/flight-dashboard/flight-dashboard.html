@@ -1,0 +1,43 @@
+<div class="dashboard-layout">
+  <header class="dashboard-header">
+    <div class="brand-lockup">
+      <div class="brand-mark" aria-hidden="true">SO</div>
+      <div>
+        <p class="eyebrow">Operations control</p>
+        <h1>SkyOps <span>flight watch</span></h1>
+      </div>
+    </div>
+    <div class="header-context">
+      <span class="live-dot" aria-hidden="true"></span>
+      <span>Live network</span>
+      <span class="context-divider" aria-hidden="true"></span>
+      <span>Updated just now</span>
+      <button
+        type="button"
+        class="theme-toggle"
+        [attr.aria-label]="darkMode() ? 'Use light mode' : 'Use dark mode'"
+        (click)="toggleDarkMode()"
+      >
+        {{ darkMode() ? 'Light' : 'Dark' }}
+      </button>
+    </div>
+    <app-kpi-cards />
+  </header>
+  <aside class="dashboard-sidebar">
+    <app-filter-bar />
+    <app-flight-details-panel />
+  </aside>
+  <main class="dashboard-map">
+    <div class="map-heading">
+      <span class="map-count">
+        {{ trackedFlights().length }} tracked flights
+      </span>
+    </div>
+    <app-flight-map />
+    <div class="map-legend" aria-label="Flight status legend">
+      <span><i class="legend-dot legend-active"></i>Active</span>
+      <span><i class="legend-dot legend-delayed"></i>Delayed</span>
+      <span><i class="legend-dot legend-scheduled"></i>Scheduled</span>
+    </div>
+  </main>
+</div>
