@@ -1,9 +1,9 @@
 # SkyOps — Flight Tracking & Operations Dashboard
 
-A responsive flight operations dashboard built with Angular 20 and Leaflet, for monitoring live flight
-status, routes, and key operational metrics from a single screen.
+A responsive flight operations dashboard built with Angular 20 and Leaflet for monitoring flight status, 
+routes, and key operational metrics using simulated flight data.
 
-**Live demo:** https://github.com/Balanjaneyasharma/skyops-flight-dashboard
+**Live demo:** https://balanjaneyasharma.github.io/skyops-flight-dashboard/dashboard
 
 ---
 
@@ -38,7 +38,7 @@ status, routes, and key operational metrics from a single screen.
 
 ```bash
 git clone https://github.com/Balanjaneyasharma/skyops-flight-dashboard.git
-cd skypos-flight-dashboard
+cd skyops-flight-dashboard
 npm install
 ng serve
 ```
