@@ -110,5 +110,3 @@ linearly between origin and destination coordinates over time.
 - Weather overlay is illustrative/mock, not a live weather data source
 
 ## Screenshots
-
-[Add 3–4 screenshots here: full dashboard, flight selected with route drawn, filters applied, dark mode]
