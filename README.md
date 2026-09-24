@@ -110,3 +110,9 @@ linearly between origin and destination coordinates over time.
 - Weather overlay is illustrative/mock, not a live weather data source
 
 ## Screenshots
+### Light Mode
+<img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/b7cfc6c5-4ab8-44bc-ad61-a07cb65cb33b" />
+
+### Dark Mode
+<img width="1915" height="903" alt="image" src="https://github.com/user-attachments/assets/32b763ec-867d-47e5-824c-8c49ab81af32" />
+
