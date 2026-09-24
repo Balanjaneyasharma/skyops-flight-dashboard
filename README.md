@@ -1,63 +1,114 @@
-<<<<<<< HEAD
-# SkyopsFlightDashboard
+# SkyOps — Flight Tracking & Operations Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.37.
+A responsive flight operations dashboard built with Angular 20 and Leaflet, for monitoring live flight
+status, routes, and key operational metrics from a single screen.
 
-## Development server
+**Live demo:** [add link here]
 
-To start a local development server, run:
+---
+
+## Features
+
+- **Interactive Leaflet map** plotting 18 mock flights, each with flight number, callsign, origin,
+  destination, and status
+- **Route visualization** — selecting a flight highlights its route with a polyline and centers/zooms
+  the map to fit it
+- **Flight details panel** — aircraft type, origin, destination, status, estimated departure/arrival
+- **KPI dashboard** — live counts for Total, Active, Delayed, Arrived, and Scheduled flights
+- **Search & filters** — search by callsign, filter by status, origin, and destination airport, with a
+  one-click reset
+- **Marker clustering** at low zoom levels to keep the map legible when flights overlap
+- **Airport markers** layer, toggleable
+- **Route playback** — animate a selected flight's position along its route
+- **Dark mode**
+- Fully responsive layout (desktop and tablet)
+
+## Tech stack
+
+- Angular 20 (standalone components, signals, new control-flow syntax)
+- TypeScript
+- RxJS (state management via a central `FlightService`)
+- Leaflet for mapping
+- Reactive Forms for search/filtering
+- Angular Router
+
+## Getting started
+
+**Prerequisites:** Node.js 18+, npm
 
 ```bash
+git clone https://github.com/Balanjaneyasharma/skypos-flight-dashboard.git
+cd skypos-flight-dashboard
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200`. The app redirects to `/dashboard` by default.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Running tests
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Production build
 
 ```bash
-ng e2e
+ng build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Build artifacts are output to `dist/`.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-=======
-# skypos-flight-dashboard
->>>>>>> cb2b33c2e8d105dbce7cc25110aa0c2b13ef0160
+## Design & architecture notes
+
+### State management
+
+All flight data, filters, and selection state live in a single `FlightService`, built around RxJS
+streams (`BehaviorSubject` + `combineLatest`). Components never read or filter the mock data directly —
+they subscribe to derived observables (`filteredFlights$`, `kpiSummary$`, `selectedFlight$`) and convert
+them to signals at the component boundary with `toSignal()`. This keeps the "single source of truth"
+pattern intact: RxJS composes and derives state centrally, signals drive template rendering locally.
+One notable rule enforced in the service: if a filter change removes the currently selected flight from
+view, the selection is automatically cleared, so the map and details panel never point at a flight
+that's no longer visible.
+
+### Component structure
+
+`DashboardComponent` is a pure layout shell — it has no injected state of its own and simply arranges
+four independent, self-contained components (`FlightMapComponent`, `KpiCardsComponent`,
+`FilterBarComponent`, `FlightDetailsPanelComponent`), each of which injects `FlightService` directly.
+This keeps every child component reusable and testable in isolation, and means the dashboard's layout
+can change without touching any component's internal logic.
+
+### Status modeling
+
+Flight status is a TypeScript `enum` (`FlightStatus`), never a raw string, so every comparison across
+the codebase is typo-proof and autocompletable. Display concerns (label text, badge color) are kept
+separate from the enum itself, in a `Record<FlightStatus, FlightStatusDisplayConfig>` map — this means
+adding a new status only requires touching one file, and TypeScript will flag any place that doesn't
+handle it.
+
+### Forms
+
+The filter bar uses a directly-constructed, fully-typed `FormGroup` (not `FormBuilder`), so filter
+values are type-checked at compile time rather than inferred loosely.
+
+### Map behavior
+
+Markers are grouped into clusters at low zoom levels to avoid visual overlap on a world view, and split
+back into individual markers as the user zooms in. Route playback interpolates a flight's position
+linearly between origin and destination coordinates over time.
+
+---
+
+## Known limitations
+
+- Flight data is static mock data — no live backend or WebSocket feed
+- Route playback uses linear interpolation between two points rather than real flight-path curvature
+- Weather overlay is illustrative/mock, not a live weather data source
+
+## Screenshots
+
+[Add 3–4 screenshots here: full dashboard, flight selected with route drawn, filters applied, dark mode]
