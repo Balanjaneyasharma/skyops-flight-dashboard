@@ -37,7 +37,7 @@ status, routes, and key operational metrics from a single screen.
 **Prerequisites:** Node.js 18+, npm
 
 ```bash
-git clone https://github.com/Balanjaneyasharma/skypos-flight-dashboard.git
+git clone https://github.com/Balanjaneyasharma/skyops-flight-dashboard.git
 cd skypos-flight-dashboard
 npm install
 ng serve
