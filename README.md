@@ -3,7 +3,7 @@
 A responsive flight operations dashboard built with Angular 20 and Leaflet, for monitoring live flight
 status, routes, and key operational metrics from a single screen.
 
-**Live demo:** [add link here]
+**Live demo:** https://github.com/Balanjaneyasharma/skyops-flight-dashboard
 
 ---
 
